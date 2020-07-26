@@ -19,14 +19,37 @@
  * @author Huan Shiuan Huang
  */
 public class ManagementCompany {
-	
+	/**
+	 * Maximum number of properties that this management company handles is set to 5
+	 */
     private final int MAX_PROPERTY = 5;
+    /**
+     * management fee percentage
+     */
     private double mgmFeePer;
+    /**
+     * Name of the management company
+     */
     private java.lang.String name;
+    /**
+     *  tax ID of the management Company
+     */
     private java.lang.String taxID;
+    /**
+     *  initialized to 10
+     */
     private final int MAX_WIDTH = 10;
+    /**
+     *  initialized to 10
+     */
     private final int MAX_DEPTH = 10;
+    /**
+     * An array of Property objects
+     */
     private Property[] properties;
+    /**
+     *  Plot of the ManagemntCompany
+     */
     private Plot plot;
 
     /** 
@@ -171,22 +194,14 @@ public class ManagementCompany {
      * @return double, the maximum rent amount
      */
     public double maxRentProp() {
-	    double max = 0;
-	    for (int i = 0;i<MAX_PROPERTY;i++) {
-	        if (properties[i]==null)
-	            break;	
-	        if (properties[i].getRentAmount() > max) {
-	            max = properties[i].getRentAmount();
-	        }
-	    }
-	    return max;
+	    return properties[maxRentPropertyIndex()].getRentAmount();
     }
  
     /**
      * This method finds the index of the property with the maximum rent amount. NOTE: For simplicity assume that each "Property" object's rent amount is different.
      * @return int , the index of the property with the maximum rent amount
      */
-    public int maxRentPropertyIndex() {
+    private int maxRentPropertyIndex() {
         int index = 0;
         double max = 0;
         for (int i = 0;i<MAX_PROPERTY;i++) {
